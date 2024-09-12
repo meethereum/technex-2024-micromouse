@@ -9,7 +9,7 @@ void log(const std::string& text) {
 
 
 void displayStack( std::stack<int> s) {
-    std::stack<int> tempStack = s;  // Create a copy of the stack to avoid modifying the original
+    std::stack<int> tempStack = s; 
     while (!tempStack.empty()) {
         log(std::to_string(tempStack.top()));
         tempStack.pop();
@@ -444,7 +444,7 @@ int main(int argc, char* argv[]) {
         log(" ");
         logArray(vertical_walls,n);
 
-         //dynamically update walls
+         //dynamically update walls ,and remove hardcoding
 
         
 
