@@ -5,11 +5,11 @@
 #include <Vector.h>
 
 // Motors
-const byte MOTOR_A = 3;  // Motor 2 Interrupt Pin - INT 1 - Right Motor
-const byte MOTOR_B = 2;  // Motor 1 Interrupt Pin - INT 0 - Left Motor
+const byte MOTOR_A = 3;  // Motor 2 Interrupt Pin- INT 1-Right Motor
+const byte MOTOR_B = 2;  // Motor 1 Interrupt Pin-INT 0-Left Motor
 
-const float stepcount = 20.00;  // 20 Slots in disk, change if different
-const float wheeldiameter = 66.10; // Wheel diameter in millimeters, change if different
+const float stepcount = 20.00;  
+const float wheeldiameter = 66.10; 
 
 volatile int counter_A = 0;
 volatile int counter_B = 0;
@@ -24,12 +24,12 @@ int in4 = 6;
 
 void ISR_countA()  
 {
-  counter_A++;  // increment Motor A counter value
+  counter_A++;  
 } 
 
 void ISR_countB()  
 {
-  counter_B++;  // increment Motor B counter value
+  counter_B++;
 }
 
 int CMtoSteps(float cm) {
@@ -43,18 +43,17 @@ int CMtoSteps(float cm) {
 
 void moveForward(int steps, int mspeed) 
 {
-   counter_A = 0;  //  reset counter A to zero
-   counter_B = 0;  //  reset counter B to zero
+   counter_A = 0;
+   counter_B = 0;  
    
-   // Set Motor A forward
+   //  Motor A forward
    digitalWrite(in1, HIGH);
    digitalWrite(in2, LOW);
  
-   // Set Motor B forward
+   //  Motor B forward
    digitalWrite(in3, HIGH);
    digitalWrite(in4, LOW);
    
-   // Go forward until step value is reached
    while (steps > counter_A && steps > counter_B) {
    
     if (steps > counter_A) {
@@ -72,8 +71,8 @@ void moveForward(int steps, int mspeed)
   // Stop when done
   analogWrite(enA, 0);
   analogWrite(enB, 0);
-  counter_A = 0;  //  reset counter A to zero
-  counter_B = 0;  //  reset counter B to zero 
+  counter_A = 0; 
+  counter_B = 0;   
  
 }
 
